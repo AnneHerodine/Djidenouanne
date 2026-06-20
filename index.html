@@ -32,5 +32,38 @@
 
 </div>
 
+<script>
+  const navFrame = document.querySelector('iframe[name="navFrame"]');
+  const BREAKPOINT = 700; // doit correspondre au @media de style.css
+
+  function sendMode() {
+    const isMobile = window.innerWidth <= BREAKPOINT;
+    navFrame.contentWindow.postMessage({ type: 'mode', mobile: isMobile }, '*');
+  }
+
+  // Écoute les messages venant de nav.html
+  window.addEventListener('message', (event) => {
+    const data = event.data;
+    if (!data) return;
+
+    if (data.type === 'navReady') {
+      // la nav vient de charger : on lui envoie tout de suite le bon mode
+      sendMode();
+    }
+
+    if (data.type === 'resize' && data.id === 'nav') {
+      // sur mobile uniquement, on ajuste la hauteur réelle de l'iframe nav
+      if (window.innerWidth <= BREAKPOINT) {
+        navFrame.style.height = data.height + 'px';
+      } else {
+        navFrame.style.height = ''; // on laisse le CSS desktop gérer (height:100%)
+      }
+    }
+  });
+
+  // Si la fenêtre est redimensionnée, on renvoie le mode à jour
+  window.addEventListener('resize', sendMode);
+</script>
+
 </body>
 </html>
