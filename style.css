@@ -37,7 +37,6 @@ ul { list-style: none; }
   justify-content: space-between;
 }
 
-/* Images gauche et droite */
 .header-img-left,
 .header-img-right {
   flex: 0 0 65px;
@@ -55,7 +54,6 @@ ul { list-style: none; }
   border: 2px solid var(--accent);
 }
 
-/* Titre central */
 .header-center {
   flex: 1;
   text-align: center;
@@ -87,6 +85,7 @@ ul { list-style: none; }
   border-right: 3px solid var(--accent);
   padding: 1rem 0;
   height: 100%;
+  position: relative;
 }
 .nav-list {
   display: flex;
@@ -109,6 +108,44 @@ ul { list-style: none; }
   border-left-color: var(--accent);
   background: #f0f4fa;
 }
+
+/* ===== BOUTON TOGGLE - caché par défaut, affiché uniquement si body.is-mobile ===== */
+.nav-toggle {
+  display: none;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 26px;
+  height: 18px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  position: absolute;
+  top: 14px;
+  right: 16px;
+  z-index: 10;
+}
+.nav-toggle span {
+  display: block;
+  height: 3px;
+  width: 100%;
+  background-color: var(--primary);
+  border-radius: 2px;
+  transition: all 0.3s ease;
+}
+.nav-toggle.active span:nth-child(1) { transform: translateY(7.5px) rotate(45deg); }
+.nav-toggle.active span:nth-child(2) { opacity: 0; }
+.nav-toggle.active span:nth-child(3) { transform: translateY(-7.5px) rotate(-45deg); }
+
+/* Mode mobile activé UNIQUEMENT via la classe posée par JS (pas par la largeur de l'iframe) */
+body.is-mobile .nav-toggle { display: flex; }
+body.is-mobile .site-nav { padding: 0.5rem 0; height: auto; }
+body.is-mobile .nav-list {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.35s ease;
+}
+body.is-mobile .nav-list.open { max-height: 600px; }
 
 /* ===== MAIN LAYOUT (index.html) ===== */
 .page-wrapper {
@@ -136,7 +173,7 @@ iframe {
 .iframe-nav    { height: 100%; min-height: 400px; }
 .iframe-footer { height: auto; }
 
-/* ===== CONTENU PRINCIPAL - CORRECTION ICI ===== */
+/* ===== CONTENU PRINCIPAL ===== */
 .main-content {
   grid-area: main;
   margin: 0;
@@ -147,11 +184,10 @@ iframe {
   background: var(--bg);
 }
 
-/* Iframe de contenu - PREND TOUT L'ESPACE */
 .content-iframe {
   width: 100%;
   height: 100%;
-  min-height: calc(100vh - 90px - 180px); /* hauteur totale moins header et footer */
+  min-height: calc(100vh - 90px - 180px);
   border: none;
   display: block;
   background: var(--bg);
@@ -186,10 +222,11 @@ iframe {
   color: #7a96b5;
 }
 
-/* ===== RESPONSIVE ===== */
+/* ===== RESPONSIVE (largeur réelle de la fenêtre, via index.html) ===== */
 @media (max-width: 700px) {
   .page-wrapper {
     grid-template-columns: 1fr;
+    grid-template-rows: auto auto auto auto;
     grid-template-areas:
       "header"
       "nav"
@@ -197,11 +234,7 @@ iframe {
       "footer";
   }
   .iframe-nav    { min-height: auto; height: auto; }
-  .main-content  { 
-    padding: 0;
-  }
-  .content-iframe {
-    min-height: 400px;
-  }
+  .main-content  { padding: 0; }
+  .content-iframe { min-height: 400px; }
   .footer-inner  { grid-template-columns: 1fr; }
 }
