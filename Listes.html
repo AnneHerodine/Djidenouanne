@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cours CSS — Listes & Positionnement</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: Arial, Verdana, sans-serif;
+      background-color: #f4f4f4;
+      color: #333;
+      line-height: 1.7;
+      padding: 2rem;
+    }
+
+    h1 {
+      font-size: 28px;
+      font-weight: bold;
+      margin-bottom: 1.5rem;
+      color: #2c2c2a;
+      text-align: center;
+    }
+
+    h2 {
+      font-size: 17px;
+      font-weight: bold;
+      margin-bottom: 0.75rem;
+      padding-left: 12px;
+      border-left: 4px solid #7F77DD;
+      color: #2c2c2a;
+    }
+
+    .section {
+      background-color: #ffffff;
+      border: 1px solid #ddd;
+      border-radius: 12px;
+      padding: 1.25rem 1.5rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .sub {
+      font-size: 13px;
+      color: #666;
+      margin-bottom: 10px;
+    }
+
+    code {
+      font-family: Courier New, monospace;
+      font-size: 13px;
+      background: #f0effe;
+      padding: 1px 5px;
+      border-radius: 4px;
+      color: #3C3489;
+    }
+
+    /* ---- GRILLE ---- */
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+      gap: 12px;
+    }
+
+    .list-card {
+      background-color: #f7f7f5;
+      border-radius: 8px;
+      padding: 0.75rem 1rem;
+    }
+
+    .list-card p {
+      font-size: 12px;
+      color: #888;
+      margin-bottom: 6px;
+      font-weight: bold;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+
+    /* ---- LISTES ---- */
+    ul, ol {
+      padding-left: 1.5rem;
+    }
+
+    li {
+      padding: 2px 0;
+      font-size: 14px;
+    }
+
+    dt {
+      font-weight: bold;
+      margin-top: 8px;
+      color: #333;
+    }
+
+    dd {
+      margin-left: 1.25rem;
+      font-size: 13px;
+      color: #666;
+    }
+
+    ul.circle     { list-style-type: circle; }
+    ul.square     { list-style-type: square; }
+    ul.none       { list-style-type: none; padding-left: 0; }
+    ul.none li    { padding: 3px 0 3px 24px; position: relative; }
+    ul.none li::before {
+      content: "—";
+      position: absolute;
+      left: 0;
+      color: #999;
+    }
+
+    ol.leading-zero  { list-style-type: decimal-leading-zero; }
+    ol.lower-alpha   { list-style-type: lower-alpha; }
+    ol.upper-roman   { list-style-type: upper-roman; }
+    ol.lower-greek   { list-style-type: lower-greek; }
+
+    /* ---- POSITION ABSOLUE ---- */
+    .pos-demo {
+      position: relative;
+      background-color: #FAEEDA;
+      border-radius: 10px;
+      width: 280px;
+      height: 150px;
+      margin: 0.75rem 0;
+    }
+
+    .pos-demo .label-conteneur {
+      position: absolute;
+      bottom: 6px;
+      right: 10px;
+      font-size: 11px;
+      color: #633806;
+      opacity: 0.7;
+    }
+
+    .box-a {
+      position: absolute;
+      top: 10px;
+      left: 10px;
+      background: #EEEDFE;
+      border: 1px solid #AFA9EC;
+      border-radius: 6px;
+      padding: 6px 10px;
+      font-size: 12px;
+      color: #3C3489;
+      z-index: 10;
+    }
+
+    .box-b {
+      position: absolute;
+      top: 40px;
+      left: 50px;
+      background: #E1F5EE;
+      border: 1px solid #5DCAA5;
+      border-radius: 6px;
+      padding: 6px 10px;
+      font-size: 12px;
+      color: #085041;
+      z-index: 0;
+      width: 150px;
+    }
+
+    /* ---- FLOAT ---- */
+    .float-demo {
+      background-color: #f7f7f5;
+      border-radius: 10px;
+      padding: 0.75rem 1rem;
+      overflow: hidden;
+      margin: 0.75rem 0;
+    }
+
+    .float-box {
+      background: #EEEDFE;
+      border: 1px solid #AFA9EC;
+      border-radius: 6px;
+      padding: 6px 10px;
+      font-size: 12px;
+      color: #3C3489;
+      float: right;
+      margin: 0 0 6px 10px;
+    }
+
+    .float-text {
+      font-size: 13px;
+      color: #555;
+    }
+
+    .separation {
+      clear: both;
+      border: none;
+      border-top: 1px dashed #ccc;
+      margin: 8px 0;
+    }
+
+    /* ---- OVERFLOW ---- */
+    .overflow-demo {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+      margin: 0.75rem 0;
+    }
+
+    .ov-box {
+      background: #f7f7f5;
+      border-radius: 8px;
+      padding: 8px;
+      font-size: 12px;
+    }
+
+    .ov-box .label {
+      font-size: 11px;
+      font-weight: bold;
+      color: #888;
+      margin-bottom: 4px;
+      text-transform: uppercase;
+    }
+
+    .ov-box .content {
+      width: 100%;
+      height: 55px;
+      background: #fff;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      padding: 4px;
+      font-size: 11px;
+      color: #333;
+    }
+
+    .content.hidden { overflow: hidden; }
+    .content.scroll  { overflow: scroll; }
+    .content.auto    { overflow: auto; }
+  </style>
+</head>
+<body>
+
+  <h1>Cours CSS — Listes &amp; Positionnement</h1>
+
+  <!-- SECTION 1 : Listes de base -->
+  <div class="section">
+    <h2>Listes de base</h2>
+    <div class="grid">
+
+      <div class="list-card">
+        <p>Non ordonnée &lt;ul&gt;</p>
+        <ul>
+          <li>Fraises</li>
+          <li>Framboises</li>
+          <li>Cerises</li>
+        </ul>
+      </div>
+
+      <div class="list-card">
+        <p>Ordonnée &lt;ol&gt;</p>
+        <ol>
+          <li>Je me lève</li>
+          <li>Je mange et je bois</li>
+          <li>Je me recouche</li>
+        </ol>
+      </div>
+
+      <div class="list-card">
+        <p>Définitions &lt;dl&gt;</p>
+        <dl>
+          <dt>Chat</dt>
+          <dd>Fait "Miaou !"</dd>
+          <dt>Chien</dt>
+          <dd>Fait "Ouaf Ouaf !"</dd>
+          <dt>Prof de maths</dt>
+          <dd>Enseigne l'incompréhensible</dd>
+        </dl>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- SECTION 2 : Styles de puces -->
+  <div class="section">
+    <h2>Styles de puces — <code>list-style-type</code></h2>
+    <div class="grid">
+
+      <div class="list-card">
+        <p>disc (défaut)</p>
+        <ul><li>Un</li><li>Deux</li><li>Trois</li></ul>
+      </div>
+
+      <div class="list-card">
+        <p>circle</p>
+        <ul class="circle"><li>Un</li><li>Deux</li><li>Trois</li></ul>
+      </div>
+
+      <div class="list-card">
+        <p>square</p>
+        <ul class="square"><li>Un</li><li>Deux</li><li>Trois</li></ul>
+      </div>
+
+      <div class="list-card">
+        <p>none (tiret custom)</p>
+        <ul class="none"><li>Un</li><li>Deux</li><li>Trois</li></ul>
+      </div>
+
+      <div class="list-card">
+        <p>decimal (défaut)</p>
+        <ol><li>Un</li><li>Deux</li><li>Trois</li></ol>
+      </div>
+
+      <div class="list-card">
+        <p>decimal-leading-zero</p>
+        <ol class="leading-zero"><li>Un</li><li>Deux</li><li>Trois</li></ol>
+      </div>
+
+      <div class="list-card">
+        <p>lower-alpha</p>
+        <ol class="lower-alpha"><li>Un</li><li>Deux</li><li>Trois</li></ol>
+      </div>
+
+      <div class="list-card">
+        <p>upper-roman</p>
+        <ol class="upper-roman"><li>Un</li><li>Deux</li><li>Trois</li></ol>
+      </div>
+
+      <div class="list-card">
+        <p>lower-greek</p>
+        <ol class="lower-greek"><li>Un</li><li>Deux</li><li>Trois</li></ol>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- SECTION 3 : Position absolue + z-index -->
+  <div class="section">
+    <h2>Position absolue + z-index</h2>
+    <p class="sub">
+      La boîte violette (<code>z-index: 10</code>) est au-dessus de la boîte verte (<code>z-index: 0</code>).
+      Le conteneur orange est en <code>position: relative</code>.
+    </p>
+    <div class="pos-demo">
+      <span class="label-conteneur">conteneur relative</span>
+      <div class="box-a">Boîte A — z-index: 10</div>
+      <div class="box-b">Boîte B — z-index: 0<br>texte plus long qui déborde</div>
+    </div>
+  </div>
+
+  <!-- SECTION 4 : Float + clear -->
+  <div class="section">
+    <h2>Float + clear</h2>
+    <p class="sub">
+      La boîte violette flotte à droite (<code>float: right</code>).
+      Le texte l'entoure, puis <code>clear: both</code> reprend le flux normal.
+    </p>
+    <div class="float-demo">
+      <div class="float-box">float: right</div>
+      <p class="float-text">
+        Deuxième paragraphe de texte. Deuxième paragraphe de texte.
+        Deuxième paragraphe de texte. Deuxième paragraphe de texte.
+        Deuxième paragraphe de texte.
+      </p>
+      <hr class="separation">
+      <p class="float-text" style="font-size:12px">↑ Séparateur avec <code>clear: both</code></p>
+    </div>
+  </div>
+
+  <!-- SECTION 5 : Overflow -->
+  <div class="section">
+    <h2>Overflow</h2>
+    <div class="overflow-demo">
+
+      <div class="ov-box">
+        <p class="label">hidden</p>
+        <div class="content hidden">
+          Texte qui dépasse la hauteur et qui sera coupé sans barre de défilement.
+        </div>
+      </div>
+
+      <div class="ov-box">
+        <p class="label">scroll</p>
+        <div class="content scroll">
+          Texte qui dépasse la hauteur et qui aura des barres de défilement permanentes.
+        </div>
+      </div>
+
+      <div class="ov-box">
+        <p class="label">auto</p>
+        <div class="content auto">
+          Texte qui dépasse la hauteur et une barre apparaît seulement si nécessaire.
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+</body>
+</html>

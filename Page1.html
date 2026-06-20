@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mon Site Personnel - DJIDENOU Anne-Marie</title>
+    <style>
+        /* ===== VARIABLES ===== */
+        :root {
+          --primary:   #1a3a5c;   /* bleu marine académique */
+          --accent:    #c8a850;   /* or institutionnel */
+          --bg:        #f5f7fa;
+          --surface:   #ffffff;
+          --text:      #1e1e2e;
+          --muted:     #6b7280;
+          --border:    #dde3ec;
+          --radius:    8px;
+          --font-head: 'Georgia', serif;
+          --font-body: 'Segoe UI', Arial, sans-serif;
+        }
+
+        /* ===== RESET ===== */
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+        html { scroll-behavior: smooth; }
+        body { font-family: var(--font-body); color: var(--text); background: var(--bg); }
+        a { text-decoration: none; color: inherit; }
+
+        /* ===== HEADER ===== */
+        .site-header {
+          background: var(--primary);
+          color: #fff;
+          padding: 1rem 2rem;
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          border-bottom: 3px solid var(--accent);
+        }
+        .header-center {
+          flex: 1;
+          text-align: center;
+        }
+        .header-title {
+          font-family: var(--font-head);
+          font-size: 1.8rem;
+          font-weight: bold;
+          color: var(--accent);
+          letter-spacing: 0.08em;
+          margin: 0;
+          text-transform: uppercase;
+        }
+
+        /* ===== MAIN LAYOUT ===== */
+        .page-wrapper {
+          min-height: 100vh;
+          display: flex;
+          flex-direction: column;
+        }
+
+        /* ===== CONTENU PRINCIPAL ===== */
+        .main-content {
+          max-width: 1100px;
+          margin: 2.5rem auto;
+          padding: 0 1.5rem;
+          display: grid;
+          grid-template-columns: 1fr 1fr;
+          gap: 1.5rem;
+          align-content: start;
+          flex: 1;
+        }
+        
+        .card {
+          background: var(--surface);
+          border: 1px solid var(--border);
+          border-radius: var(--radius);
+          padding: 1.5rem;
+          transition: box-shadow 0.2s;
+        }
+        .card:hover { box-shadow: 0 4px 16px rgba(26,58,92,0.10); }
+        
+        .card h2, .card h3, .card h4 {
+          font-family: var(--font-head);
+          color: var(--primary);
+          margin-bottom: 0.8rem;
+          padding-bottom: 0.4rem;
+          border-bottom: 2px solid var(--accent);
+        }
+        .card h2 { font-size: 1.25rem; }
+        .card h3 { font-size: 1.15rem; }
+        .card h4 { font-size: 1.05rem; }
+        
+        .card p { font-size: 0.95rem; color: var(--text); line-height: 1.7; }
+        .card p strong { color: var(--primary); }
+
+        /* Section hero */
+        .hero {
+          grid-column: 1 / -1;
+          background: linear-gradient(135deg, var(--primary) 60%, #2a5298);
+          color: #fff;
+          border-radius: var(--radius);
+          padding: 2.5rem 2rem;
+          text-align: center;
+          box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+        }
+        .hero h1 {
+          font-family: var(--font-head);
+          font-size: 2.2rem;
+          color: var(--accent);
+          margin-bottom: 0.5rem;
+        }
+        .hero p { font-size: 1.1rem; color: #c5d3e4; }
+
+        .card.full-width { grid-column: 1 / -1; }
+
+        /* Citation & Poésie */
+        q {
+          font-style: italic;
+          font-weight: 600;
+          color: var(--primary);
+        }
+        blockquote {
+          background: var(--bg);
+          border-left: 4px solid var(--accent);
+          padding: 1rem;
+          margin-top: 0.5rem;
+          border-radius: 0 var(--radius) var(--radius) 0;
+        }
+        blockquote p {
+          font-family: var(--font-head);
+          font-style: italic;
+          color: var(--muted) !important;
+        }
+
+        /* ===== FOOTER ===== */
+        .site-footer {
+          background: var(--primary);
+          color: #c5d3e4;
+          margin-top: auto;
+        }
+        .footer-bottom {
+          text-align: center;
+          padding: 1.2rem;
+          font-size: 0.85rem;
+          border-top: 1px solid #2a4a6e;
+          color: #a8bfd4;
+        }
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 750px) {
+          .main-content { grid-template-columns: 1fr; }
+          .hero h1 { font-size: 1.8rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="page-wrapper">
+
+        
+
+        <main class="main-content">
+
+           
+
+            <article class="card">
+                <h2>Je me présente</h2>
+                <p>
+                    Bonjour et bienvenue sur mon site !<br /><br />
+                    Je me nomme <strong>DJIDENOU Anne-Marie</strong>.<br />
+                    Je suis née le <strong>26 Juillet 2007</strong> et je suis actuellement 
+                    <strong>Étudiante en Licence Professionnelle 1 en Informatique de Gestion à l'ENEAM</strong>.
+                </p>
+            </article>
+
+            <article class="card">
+                <h2>Ce que je suis en train de faire</h2>
+                <p>
+                    Ceci est mon premier test, et je suis vraiment heureuse d'écrire ma première page web. <br /><br />
+                    Je deviendrai certainement une grande Webmaster dans quelque temps !
+                </p>
+            </article>
+
+            <article class="card full-width">
+                <h3>Un peu d'histoire</h3>
+                <p>
+                    <strong>POINT p<sub>1</sub> :</strong> <em>Le xhtml ?</em><br />
+                    Le langage XHTML est le langage qui nous permet de créer des sites web en ce début de
+                    XXI<sup>ème</sup> siècle.<br />
+                    Avant, vers la fin du XX<sup>ème</sup>, on utilisait le langage HTML, qui disparaît 
+                    aujourd'hui peu à peu au profit de XHTML.
+                </p>
+            </article>
+
+            <article class="card">
+                <h2>Vous souvenez-vous ?</h2>
+                <p>
+                    Vous souvenez-vous de la phrase célèbre qu'a prononcé Neil Armstrong en posant le premier 
+                    pied sur la Lune ? <br /><br />
+                    <q>C'est un petit pas pour l'Homme, un grand pas pour l'Humanité</q>.<br /><br /> 
+                    C'était un certain 20 Juillet 1969...
+                </p>
+            </article>
+
+            <article class="card">
+                <h4>Le Corbeau et le Renard</h4>
+                <p>Voici ce qui est sans aucun doute une des plus connues fables de <em>La Fontaine</em> :</p>
+                <blockquote>
+                    <p>
+                        Maître Corbeau, sur un arbre perché,<br />
+                        Tenait en son bec un fromage.<br />
+                        Maître Renard, par l'odeur alléché,<br />
+                        Lui tint à peu près ce langage :<br />
+                        "Hé ! bonjour, Monsieur du Corbeau.<br />
+                        Que vous êtes joli ! que vous me semblez beau !<br />
+                        Sans mentir, si votre ramage<br />
+                        Se rapporte à votre plumage,<br />
+                        Vous êtes le Phénix des hôtes de ces bois."<br />
+                        A ces mots le Corbeau ne se sent pas de joie ;<br />
+                        Et pour montrer sa belle voix,<br />
+                        Il ouvre un large bec, laisse tomber sa proie.<br />
+                        Le Renard s'en saisit, et dit : "Mon bon Monsieur,<br />
+                        Apprenez que tout flatteur<br />
+                        Vit aux dépens de celui qui l'écoute :<br />
+                        Cette leçon vaut bien un fromage, sans doute."<br />
+                        Le Corbeau, honteux et confus,<br />
+                        Jura, mais un peu tard, qu'on ne l'y prendrait plus.
+                    </p>
+                </blockquote>
+            </article>
+
+        </main>
+
+
+    </div>
+
+</body>
+</html>

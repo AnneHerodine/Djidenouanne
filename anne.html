@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mon amoureux en chiffres</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=DM+Sans:wght@300;400&display=swap" rel="stylesheet" />
+  <style>
+    /* ── Reset & base ── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --rose:      #c9637a;
+      --rose-pale: #f5e8ec;
+      --ink:       #1a1612;
+      --muted:     #8a817c;
+      --hairline:  #e8e2de;
+      --bg:        #faf9f7;
+      --serif:     'Cormorant Garamond', Georgia, serif;
+      --sans:      'DM Sans', sans-serif;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: var(--sans);
+      background: var(--bg);
+      color: var(--ink);
+      font-size: 15px;
+      line-height: 1.7;
+      min-height: 100vh;
+    }
+
+    /* ── Layout ── */
+    .container {
+      max-width: 680px;
+      margin: 0 auto;
+      padding: 0 2rem;
+    }
+
+    /* ── Hero ── */
+    .hero {
+      text-align: center;
+      padding: 5rem 1rem 3.5rem;
+      position: relative;
+    }
+
+    .hero::after {
+      content: '';
+      display: block;
+      width: 40px;
+      height: 1px;
+      background: var(--rose);
+      margin: 2.5rem auto 0;
+      opacity: 0.5;
+    }
+
+    .hero-eyebrow {
+      font-family: var(--sans);
+      font-size: 10px;
+      font-weight: 300;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 1rem;
+    }
+
+    .hero-title {
+      font-family: var(--serif);
+      font-size: clamp(2.4rem, 6vw, 3.6rem);
+      font-weight: 300;
+      line-height: 1.2;
+      color: var(--ink);
+    }
+
+    .hero-title em {
+      font-style: italic;
+      color: var(--rose);
+    }
+
+    .hero-subtitle {
+      font-size: 12px;
+      color: var(--muted);
+      margin-top: 1rem;
+      letter-spacing: 0.05em;
+    }
+
+    /* ── Section ── */
+    section {
+      padding: 3rem 0;
+      border-top: 1px solid var(--hairline);
+    }
+
+    .section-tag {
+      font-size: 9px;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 1.8rem;
+      font-weight: 400;
+    }
+
+    /* ── Stats grid ── */
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+      gap: 1px;
+      background: var(--hairline);
+      border: 1px solid var(--hairline);
+    }
+
+    .stat-cell {
+      background: var(--bg);
+      padding: 1.6rem 1.2rem;
+      text-align: center;
+    }
+
+    .stat-number {
+      font-family: var(--serif);
+      font-size: 2.6rem;
+      font-weight: 300;
+      line-height: 1;
+      color: var(--ink);
+    }
+
+    .stat-number.accent { color: var(--rose); }
+
+    .stat-unit {
+      font-size: 10px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-top: 4px;
+    }
+
+    .stat-desc {
+      font-size: 11px;
+      color: var(--muted);
+      margin-top: 6px;
+    }
+
+    /* ── Bar chart ── */
+    .bar-list { list-style: none; display: flex; flex-direction: column; gap: 14px; }
+
+    .bar-item { display: flex; align-items: center; gap: 14px; }
+
+    .bar-label {
+      font-size: 12px;
+      color: var(--muted);
+      min-width: 110px;
+      text-align: right;
+      flex-shrink: 0;
+    }
+
+    .bar-track {
+      flex: 1;
+      height: 2px;
+      background: var(--hairline);
+      position: relative;
+    }
+
+    .bar-fill {
+      height: 100%;
+      background: var(--rose);
+      opacity: 0.65;
+      transform-origin: left;
+      animation: growBar 1.2s cubic-bezier(0.16, 1, 0.3, 1) both;
+    }
+
+    .bar-pct {
+      font-size: 11px;
+      color: var(--muted);
+      min-width: 32px;
+      text-align: right;
+      font-variant-numeric: tabular-nums;
+    }
+
+    @keyframes growBar {
+      from { transform: scaleX(0); }
+      to   { transform: scaleX(1); }
+    }
+
+    .bar-fill:nth-child(1) { animation-delay: 0.1s; }
+
+    /* ── Timeline ── */
+    .timeline { list-style: none; position: relative; padding-left: 1.25rem; }
+
+    .timeline::before {
+      content: '';
+      position: absolute;
+      left: 3px; top: 8px; bottom: 8px;
+      width: 1px;
+      background: var(--hairline);
+    }
+
+    .timeline li {
+      position: relative;
+      margin-bottom: 1.6rem;
+      padding-left: 0.5rem;
+      animation: fadeUp 0.6s ease both;
+    }
+
+    .timeline li::before {
+      content: '';
+      position: absolute;
+      left: -1.05rem;
+      top: 7px;
+      width: 7px; height: 7px;
+      border-radius: 50%;
+      border: 1px solid var(--rose);
+      background: var(--bg);
+    }
+
+    .timeline li:last-child::before { background: var(--rose); }
+
+    .tl-date {
+      font-size: 10px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 3px;
+    }
+
+    .tl-text {
+      font-family: var(--serif);
+      font-size: 1.05rem;
+      font-weight: 300;
+      color: var(--ink);
+    }
+
+    /* ── Citation ── */
+    .quote-wrap {
+      padding: 2rem 0 2rem 2rem;
+      border-left: 1px solid var(--rose);
+      margin-left: 0;
+    }
+
+    .quote-text {
+      font-family: var(--serif);
+      font-size: clamp(1.2rem, 2.5vw, 1.5rem);
+      font-weight: 300;
+      font-style: italic;
+      line-height: 1.65;
+      color: var(--ink);
+    }
+
+    .quote-author {
+      font-size: 11px;
+      letter-spacing: 0.1em;
+      color: var(--muted);
+      margin-top: 1rem;
+      text-transform: uppercase;
+    }
+
+    /* ── Footer ── */
+    footer {
+      text-align: center;
+      padding: 3rem 1rem 4rem;
+      border-top: 1px solid var(--hairline);
+    }
+
+    .footer-heart {
+      font-size: 1.1rem;
+      color: var(--rose);
+      display: block;
+      margin-bottom: 0.5rem;
+      animation: pulse 2s ease-in-out infinite;
+    }
+
+    .footer-text {
+      font-size: 11px;
+      color: var(--muted);
+      letter-spacing: 0.1em;
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 1; }
+      50%       { opacity: 0.4; }
+    }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(10px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ── Responsive ── */
+    @media (max-width: 480px) {
+      .container { padding: 0 1.2rem; }
+      .bar-label { min-width: 80px; }
+      .stats-grid { grid-template-columns: 1fr 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ─── HERO ─── -->
+  <div class="container">
+    <header class="hero">
+      <p class="hero-eyebrow">une page rien que pour toi</p>
+      <h1 class="hero-title">Mon <em>amoureux</em><br>en chiffres</h1>
+      <p class="hero-subtitle" id="since-text">Calcul en cours…</p>
+    </header>
+
+    <!-- ─── STATS ─── -->
+    <section>
+      <p class="section-tag">Les chiffres qui comptent</p>
+      <div class="stats-grid">
+        <div class="stat-cell">
+          <div class="stat-number accent" id="days-count">—</div>
+          <div class="stat-unit">jours</div>
+          <div class="stat-desc">ensemble</div>
+        </div>
+        <div class="stat-cell">
+          <div class="stat-number">∞</div>
+          <div class="stat-unit">fois</div>
+          <div class="stat-desc">je pense à toi</div>
+        </div>
+        <div class="stat-cell">
+          <div class="stat-number">100</div>
+          <div class="stat-unit">%</div>
+          <div class="stat-desc">de mon cœur</div>
+        </div>
+        <div class="stat-cell">
+          <div class="stat-number">1</div>
+          <div class="stat-unit">unique</div>
+          <div class="stat-desc">comme toi</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ─── BARRES ─── -->
+    <section>
+      <p class="section-tag">Pourquoi je t'aime — classement</p>
+      <ul class="bar-list">
+        <li class="bar-item">
+          <span class="bar-label">ton sourire</span>
+          <div class="bar-track"><div class="bar-fill" style="width:95%"></div></div>
+          <span class="bar-pct">95%</span>
+        </li>
+        <li class="bar-item">
+          <span class="bar-label">ta gentillesse</span>
+          <div class="bar-track"><div class="bar-fill" style="width:90%; animation-delay:.15s"></div></div>
+          <span class="bar-pct">90%</span>
+        </li>
+        <li class="bar-item">
+          <span class="bar-label">ta présence</span>
+          <div class="bar-track"><div class="bar-fill" style="width:88%; animation-delay:.3s"></div></div>
+          <span class="bar-pct">88%</span>
+        </li>
+        <li class="bar-item">
+          <span class="bar-label">ton humour</span>
+          <div class="bar-track"><div class="bar-fill" style="width:82%; animation-delay:.45s"></div></div>
+          <span class="bar-pct">82%</span>
+        </li>
+        <li class="bar-item">
+          <span class="bar-label">tout le reste</span>
+          <div class="bar-track"><div class="bar-fill" style="width:100%; animation-delay:.6s"></div></div>
+          <span class="bar-pct">100%</span>
+        </li>
+      </ul>
+    </section>
+
+    <!-- ─── TIMELINE ─── -->
+    <section>
+      <p class="section-tag">Nos moments</p>
+      <ul class="timeline">
+        <li style="animation-delay:.1s">
+          <p class="tl-date">Premier jour</p>
+          <p class="tl-text">On s'est rencontrés — et tout a changé.</p>
+        </li>
+        <li style="animation-delay:.25s">
+          <p class="tl-date">Un soir mémorable</p>
+          <p class="tl-text">Ce moment que je n'oublierai jamais.</p>
+        </li>
+        <li style="animation-delay:.4s">
+          <p class="tl-date">Aujourd'hui</p>
+          <p class="tl-text">Le meilleur reste à venir.</p>
+        </li>
+      </ul>
+    </section>
+
+    <!-- ─── CITATION ─── -->
+    <section>
+      <p class="section-tag">Une pensée pour toi</p>
+      <blockquote class="quote-wrap">
+        <p class="quote-text">
+          Tu n'es pas juste quelqu'un dans ma vie —<br>
+          tu es la raison pour laquelle ma vie est plus belle.
+        </p>
+
+
+        <p class="quote-author">— avec tout mon amour</p>
+
+
+
+
+        
+      </blockquote>
+    </section>
+
+    <!-- ─── FOOTER ─── -->
+    <footer>
+      <span class="footer-heart">♥</span>
+      <p class="footer-text">fait avec amour · rien que pour toi</p>
+    </footer>
+  </div>
+
+  <script>
+    // ── Changer cette date par votre vraie date de rencontre ──
+    const START_DATE = new Date('2024-01-01');
+
+    const today = new Date();
+    const msPerDay = 1000 * 60 * 60 * 24;
+    const days = Math.floor((today - START_DATE) / msPerDay);
+
+    document.getElementById('days-count').textContent = days.toLocaleString('fr-FR');
+    document.getElementById('since-text').textContent =
+      'Ensemble depuis ' + days.toLocaleString('fr-FR') + ' jours';
+  </script>
+
+</body>
+</html>

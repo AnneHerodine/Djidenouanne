@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Accueil - ENEAM</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', 'Georgia', Arial, sans-serif;
+      background: #f5f7fa;
+      color: #1e1e2e;
+      line-height: 1.5;
+    }
+
+    /* Section Héro */
+    .hero {
+      background: linear-gradient(135deg, #1a3a5c 0%, #2a5298 100%);
+      color: white;
+      border-radius: 8px;
+      padding: 3rem 2rem;
+      text-align: center;
+      margin-bottom: 1.5rem;
+    }
+
+    .hero h1 {
+      font-family: 'Georgia', serif;
+      font-size: 2rem;
+      color: #c8a850;
+      margin-bottom: 1rem;
+      letter-spacing: 0.02em;
+    }
+
+    .hero p {
+      font-size: 1rem;
+      color: #c5d3e4;
+      max-width: 700px;
+      margin: 0 auto;
+      line-height: 1.6;
+    }
+
+    .hero-description {
+      margin-top: 1rem;
+      font-size: 0.95rem;
+      color: #d0def0;
+    }
+
+    /* Cartes */
+    .card {
+      background: white;
+      border-radius: 8px;
+      padding: 1.5rem;
+      margin-bottom: 1.5rem;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+      border: 1px solid #dde3ec;
+      transition: box-shadow 0.2s;
+    }
+
+    .card:hover {
+      box-shadow: 0 4px 16px rgba(26, 58, 92, 0.1);
+    }
+
+    .card h2 {
+      font-family: 'Georgia', serif;
+      font-size: 1.15rem;
+      color: #1a3a5c;
+      margin-bottom: 0.75rem;
+      padding-bottom: 0.4rem;
+      border-bottom: 2px solid #c8a850;
+    }
+
+    .card p {
+      font-size: 0.92rem;
+      color: #6b7280;
+      line-height: 1.7;
+      margin-bottom: 0.75rem;
+    }
+
+    /* Grille pour les sections */
+    .grid-2cols {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.5rem;
+      margin-bottom: 1.5rem;
+    }
+
+    /* Profil personnel */
+    .profile-info {
+      background: #f0f4fa;
+      padding: 1rem 1.25rem;
+      border-radius: 8px;
+      border-left: 3px solid #c8a850;
+      margin-top: 0.5rem;
+    }
+
+    .profile-info p {
+      margin: 0.5rem 0;
+      line-height: 1.6;
+      margin-bottom: 0;
+    }
+
+    .profile-info strong {
+      color: #1a3a5c;
+      min-width: 130px;
+      display: inline-block;
+      font-weight: 600;
+    }
+
+    /* Liste */
+    .info-list {
+      list-style: none;
+      margin-top: 0.5rem;
+    }
+
+    .info-list li {
+      padding: 0.6rem 0;
+      border-bottom: 1px solid #e5e9f0;
+      font-size: 0.92rem;
+      color: #6b7280;
+    }
+
+    .info-list li:last-child {
+      border-bottom: none;
+    }
+
+    .info-list li strong {
+      color: #1a3a5c;
+      min-width: 140px;
+      display: inline-block;
+    }
+
+    /* Badge */
+    .badge {
+      display: inline-block;
+      background: #c8a850;
+      color: #1a3a5c;
+      font-size: 0.7rem;
+      font-weight: bold;
+      padding: 0.2rem 0.6rem;
+      border-radius: 20px;
+      margin-left: 0.5rem;
+      vertical-align: middle;
+    }
+
+    /* Responsive */
+    @media (max-width: 700px) {
+      .grid-2cols {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+      }
+      
+      .hero {
+        padding: 2rem 1.5rem;
+      }
+      
+      .hero h1 {
+        font-size: 1.5rem;
+      }
+      
+      .profile-info strong {
+        min-width: 100px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+ 
+
+  <!-- Grille 2 colonnes -->
+  <div class="grid-2cols">
+
+    <!-- Section Présentation de l'école -->
+    <div class="card">
+      <h2>Présentation de l'ENEAM</h2>
+      <p>L'École Nationale d'Économie Appliquée et de Management est une institution de référence au Bénin, formant des cadres compétents dans les domaines de la gestion, de l'informatique et de l'économie.</p>
+      <p>Notre Licence Professionnelle en Informatique de Gestion allie rigueur académique et pratique professionnelle.</p>
+    </div>
+
+    <!-- Section Projet -->
+    <div class="card">
+      <h2>Projet de Web Design</h2>
+      <p>Le projet consiste en la conception et le développement d'une application web complète, intégrant les technologies modernes du développement web.</p>
+      <p>Les étudiants sont évalués sur leur capacité à analyser, concevoir, développer et documenter une solution informatique.</p>
+    </div>
+
+  </div>
+
+  <!-- Grille 2 colonnes pour la suite -->
+  <div class="grid-2cols">
+
+    <!-- Section À propos du développeur -->
+    <div class="card">
+      <h2>À propos du développeur</h2>
+      <div class="profile-info">
+        <p><strong>Nom :</strong> DJIDENOU Anne-Marie</p>
+        <p><strong>Filière :</strong> Licence Professionnelle en Informatique de Gestion</p>
+        <p><strong>Promotion :</strong> 2025-2026</p>
+        <p><strong>Projet :</strong> Site web du cours de web design</p>
+      </div>
+    </div>
+
+    <!-- Section Informations complémentaires -->
+    <div class="card">
+      <h2>Informations clés</h2>
+      <ul class="info-list">
+        <li><strong>Durée de la formation :</strong> 3 ans</li>
+        <li><strong>Crédits ECTS :</strong> 60 crédits</li>
+        <li><strong>Stage obligatoire :</strong> 5 mois minimum</li>
+        <li><strong>Effectif promotion :</strong> 145 étudiants</li>
+        <li><strong>Début des cours :</strong> Octobre 2025</li>
+      </ul>
+    </div>
+
+  </div>
+
+  <!-- Section Objectifs pédagogiques (pleine largeur) -->
+  <div class="card">
+    <h2>Objectifs de la formation</h2>
+    <ul class="info-list">
+      <li><strong>Développement web :</strong> Maîtriser HTML, CSS, JavaScript et les frameworks modernes</li>
+      <li><strong>Bases de données :</strong> Concevoir et administrer des bases de données relationnelles</li>
+      <li><strong>Algorithmique :</strong> Acquérir les fondamentaux des structures de données</li>
+      <li><strong>Systèmes d'information :</strong> Comprendre les architectures SI</li>
+      <li><strong>Gestion de projet :</strong> Appliquer les méthodologies agiles</li>
+    </ul>
+  </div>
+
+  <!-- Section Contact -->
+  <div class="card">
+    <h2>Coordonnées de l'école</h2>
+    <p><strong>ENEAM - Université d'Abomey-Calavi</strong></p>
+    <p>Cotonou, Bénin</p>
+    <p>Téléphone : +229 00 00 00 00</p>
+    <p>Email : contact@eneam.uac.bj</p>
+    <p>Site web : www.eneam.uac.bj</p>
+  </div>
+
+</body>
+</html>

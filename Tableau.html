@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tableau N°1</title>
+  <style>
+
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      background-color: #f5f5f5;
+      font-family: Arial, sans-serif;
+    }
+
+    .container {
+      text-align: center;
+    }
+
+    h2 {
+      margin-bottom: 20px;
+      font-size: 1.4rem;
+    }
+
+    table {
+      border-collapse: collapse;
+      border: 6px double gold;
+    }
+
+    td {
+      border: 2px solid #444;
+      padding: 16px 24px;
+      text-align: center;
+      vertical-align: middle;
+      font-size: 1.1rem;
+      font-weight: bold;
+    }
+
+    .encart {
+      color: blue;
+      font-size: 1.4rem;
+      letter-spacing: 3px;
+    }
+
+    .epac-cell {
+      padding: 20px 10px;
+    }
+
+    .epac-text {
+      writing-mode: vertical-lr;
+      text-orientation: mixed;
+      transform: rotate(180deg);
+      display: inline-block;
+      white-space: nowrap;
+      font-size: 1.2rem;
+    }
+
+    .ia {
+      animation: clignoter 1s step-start infinite;
+      font-size: 1.3rem;
+    }
+
+    @keyframes clignoter {
+      0%, 100% { opacity: 1; }
+      50%       { opacity: 0; }
+    }
+
+    .claude-text {
+      display: inline-block;
+      transform: skewX(-15deg);
+      color: #003366;
+    }
+
+    .flash-text {
+      display: inline-block;
+      transform: skewX(-20deg);
+    }
+
+    .prog-cell {
+      padding: 22px 10px;
+    }
+
+    .prog-text {
+      display: inline-block;
+      transform: rotate(20deg);
+      white-space: nowrap;
+      font-size: 1.1rem;
+      font-style: italic;
+      color: #0b0e09;
+    }
+
+    .prog-texte {
+      display: inline-block;
+      transform: rotate(-26deg);
+      white-space: nowrap;
+      font-size: 1.1rem;
+      font-style: italic;
+      color: #141313;
+    }
+
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <h2>Tableau N°1</h2>
+
+    <table>
+
+      <!-- Ligne 1 : EPAC (rowspan=3 pour couvrir toutes les lignes) + ENEAM -->
+      <tr>
+        <td rowspan="3" class="epac-cell">
+          <span class="epac-text">EPAC</span>
+        </td>
+        <td colspan="3" class="encart">ENEAM</td>
+      </tr>
+
+      <!-- Ligne 2 : IG (fond bleu ciel, rowspan=2) | IA clignote -->
+      <tr>
+        <td rowspan="2" style="background-color: #1552ad;">
+          <span class="claude-text" style="color: rgb(6, 8, 10);">IG</span>
+        </td>
+        <td class="ia">I A</td>
+      </tr>
+
+      <!-- Ligne 3 : Claude oblique -->
+      <tr>
+        <td><span class="flash-text">Claude</span></td>
+      </tr>
+
+      <!-- Ligne 4 : Flash oblique | Programmation en diagonale -->
+      <tr>
+        <td><span class="prog-texte">Flash</span></td>
+        <td colspan="3" class="prog-cell">
+          <span class="prog-text">Programmation</span>
+        </td>
+      </tr>
+
+    </table>
+  </div>
+
+</body>
+</html>

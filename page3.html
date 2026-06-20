@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profil - DJIDENOU Anne-Marie</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', 'Georgia', Arial, sans-serif;
+            background: linear-gradient(135deg, #f5f7fa 0%, #e8edf5 100%);
+            color: #1e1e2e;
+            line-height: 1.6;
+            padding: 2rem;
+            min-height: 100vh;
+        }
+
+        /* Conteneur principal */
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 16px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            padding: 2rem;
+        }
+
+        /* EN-TÊTE */
+        .entete {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border-bottom: 3px solid #c8a850;
+            padding-bottom: 1.5rem;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .entete img.logo {
+            width: 70px;
+            height: 70px;
+            object-fit: contain;
+            transition: transform 0.3s ease;
+        }
+
+        .entete img.logo:hover {
+            transform: scale(1.05);
+        }
+
+        .entete .centre {
+            text-align: center;
+        }
+
+        .entete .centre h1 {
+            margin: 0;
+            font-size: 1.6rem;
+            color: #1a3a5c;
+            font-family: 'Georgia', serif;
+            letter-spacing: 0.02em;
+        }
+
+        .entete .centre a {
+            font-size: 1rem;
+            font-weight: 600;
+            color: #c8a850;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .entete .centre a:hover {
+            color: #1a3a5c;
+            text-decoration: underline;
+        }
+
+        /* Titres de sections */
+        h2 {
+            color: #1a3a5c;
+            font-family: 'Georgia', serif;
+            font-size: 1.3rem;
+            border-left: 4px solid #c8a850;
+            padding-left: 1rem;
+            margin: 2rem 0 1rem 0;
+        }
+
+        h2:first-of-type {
+            margin-top: 0;
+        }
+
+        /* Tableau informations */
+        .info-table {
+            border-collapse: collapse;
+            width: 100%;
+            background: #f8f9fc;
+            border-radius: 12px;
+            overflow: hidden;
+            margin-bottom: 1.5rem;
+        }
+
+        .info-table td {
+            padding: 12px 16px;
+            border-bottom: 1px solid #e5e9f0;
+        }
+
+        .info-table tr:last-child td {
+            border-bottom: none;
+        }
+
+        .info-table td:first-child {
+            font-weight: 700;
+            background-color: #eef2f7;
+            color: #1a3a5c;
+            width: 35%;
+        }
+
+        .info-table td:last-child {
+            color: #4a5568;
+        }
+
+        /* Photo */
+        .photo-lien {
+            text-align: center;
+            margin: 1.5rem 0;
+        }
+
+        .photo-lien img {
+            width: 200px;
+            height: 220px;
+            object-fit: cover;
+            border-radius: 16px;
+            border: 4px solid #c8a850;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .photo-lien img:hover {
+            transform: scale(1.02);
+            box-shadow: 0 12px 28px rgba(0, 0, 0, 0.2);
+        }
+
+        .photo-lien small {
+            display: block;
+            margin-top: 0.75rem;
+            color: #6b7280;
+            font-style: italic;
+        }
+
+        /* Liste diplômes */
+        ol {
+            background: #f8f9fc;
+            border-radius: 12px;
+            padding: 1rem 1rem 1rem 2.5rem;
+            margin: 0.5rem 0 1rem 0;
+        }
+
+        ol li {
+            margin-bottom: 0.75rem;
+            color: #4a5568;
+            padding-left: 0.5rem;
+        }
+
+        ol li a {
+            color: #c8a850;
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.3s;
+        }
+
+        ol li a:hover {
+            color: #1a3a5c;
+            text-decoration: underline;
+        }
+
+        /* Loisirs */
+        .loisirs {
+            background: linear-gradient(135deg, #f0f4fa 0%, #eef2f7 100%);
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin: 0.5rem 0 1rem 0;
+            border-left: 4px solid #c8a850;
+        }
+
+        .loisirs p {
+            line-height: 1.8;
+            text-align: justify;
+            color: #4a5568;
+        }
+
+        /* Badges pour les loisirs */
+        .badge-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.75rem;
+            margin-top: 1rem;
+        }
+
+        .badge {
+            background: white;
+            color: #1a3a5c;
+            padding: 0.4rem 1rem;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+            border: 1px solid #c8a850;
+        }
+
+        /* Responsive */
+        @media (max-width: 700px) {
+            body {
+                padding: 1rem;
+            }
+
+            .container {
+                padding: 1.25rem;
+            }
+
+            .entete {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .entete .centre h1 {
+                font-size: 1.3rem;
+            }
+
+            .info-table td {
+                padding: 10px 12px;
+            }
+
+            .info-table td:first-child {
+                width: 40%;
+            }
+
+            h2 {
+                font-size: 1.15rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+
+        <!-- EN-TÊTE -->
+        <div class="entete">
+            <a href="https://uac.bj" target="_blank">
+                <img class="logo" src="logo_uac.png" alt="Logo UAC" />
+            </a>
+
+            <div class="centre">
+                <h1>Mon Profil</h1>
+                <a href="#loisirs">DJIDENOU Anne-Marie</a>
+            </div>
+
+            <a href="https://eneam.uac.bj" target="_blank">
+                <img class="logo" src="logo_eneam.png" alt="Logo ENEAM" />
+            </a>
+        </div>
+
+        <!-- SECTION I : INFORMATIONS PERSONNELLES -->
+        <h2>Informations Personnelles</h2>
+
+        <table class="info-table">
+            <tr>
+                <td>Nom</td>
+                <td>DJIDENOU</td>
+            </tr>
+            <tr>
+                <td>Prénoms</td>
+                <td>GBESSIEDE Anne-Marie Hérodine</td>
+            </tr>
+            <tr>
+                <td>Âge</td>
+                <td>18 ans</td>
+            </tr>
+            <tr>
+                <td>Numéro de téléphone</td>
+                <td>01 61 63 09 88</td>
+            </tr>
+            <tr>
+                <td>Email</td>
+                <td>anne-marie.djidenou@eneam.uac.bj</td>
+            </tr>
+        </table>
+
+        <!-- Photo cliquable -->
+        <div class="photo-lien">
+            <a href="Page1.html">
+                <img src="image collée.png" alt="Photo de DJIDENOU GBESSIEDE Anne-Marie Hérodine" />
+            </a>
+            <small>Cliquez sur la photo pour accéder à la page 1</small>
+        </div>
+
+        <!-- SECTION II : MES DIPLÔMES -->
+        <h2>Mes Diplômes</h2>
+        <ol>
+            <li>Certificat d'Études Primaires (CEP)</li>
+            <li>Brevet d'Études du Premier Cycle (BEPC)</li>
+            <li><a href="Page1.html">Baccalauréat (BAC)</a></li>
+            <li>En cours : Licence Professionnelle 1 en Informatique de Gestion — ENEAM</li>
+        </ol>
+
+        <!-- SECTION III : MES LOISIRS -->
+        <h2 id="loisirs">Mes Loisirs</h2>
+        <div class="loisirs">
+            <p>
+                Mes loisirs occupent une place importante dans ma vie quotidienne et contribuent
+                à mon épanouissement personnel. J'aime particulièrement la lecture, qui me permet
+                d'enrichir mes connaissances. La musique est également une passion que je chéris ;
+                elle m'apporte sérénité et motivation dans mes moments de travail.
+            </p>
+            <p>
+                En tant qu'étudiante en informatique, je m'intéresse de près au web design
+                et à la création de sites internet. Le sport, notamment la marche à pied, fait partie
+                de mes habitudes pour maintenir une bonne santé physique.
+            </p>
+            <p>
+                J'aime passer du temps avec ma famille et mes amis, car ces moments de partage sont
+                précieux pour moi. Enfin, j'accorde beaucoup d'importance à la prière et à la vie
+                spirituelle, qui guident mes actions au quotidien.
+            </p>
+            <p>
+                Tous ces loisirs contribuent à faire de moi une personne équilibrée,
+                curieuse et ouverte sur le monde.
+            </p>
+
+            <!-- Badges des loisirs -->
+            <div class="badge-container">
+                <span class="badge">Lecture</span>
+                <span class="badge">Musique</span>
+                <span class="badge">Web Design</span>
+                <span class="badge">Marche à pied</span>
+                <span class="badge">Famille & Amis</span>
+                <span class="badge">Vie spirituelle</span>
+            </div>
+        </div>
+
+    </div>
+
+</body>
+
+</html>

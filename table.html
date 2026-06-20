@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tableaux HTML</title>
+  <link rel="stylesheet" href="Table.css">
+  <style>
+/* =============================================
+   Table.css — Styles pour tableaux HTML
+   ============================================= */
+
+/* Reset de base */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Segoe UI', Arial, sans-serif;
+  font-size: 15px;
+  color: #2c2c2a;
+  background-color: #f8f7f4;
+  padding: 2rem;
+  line-height: 1.6;
+}
+
+/* Conteneur pour espacer les tableaux */
+.table-wrapper {
+  margin-bottom: 2.5rem;
+}
+
+/* ---- Tableau ---- */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background-color: #ffffff;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.08);
+}
+
+/* ---- Caption ---- */
+caption {
+  caption-side: top;
+  text-align: left;
+  font-size: 13px;
+  font-weight: 600;
+  color: #5f5e5a;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  padding: 0 0 0.6rem 0;
+}
+
+/* ---- Cellules ---- */
+th,
+td {
+  border: 0.5px solid #d3d1c7;
+  padding: 10px 16px;
+  text-align: left;
+  vertical-align: middle;
+}
+
+/* ---- En-tête thead ---- */
+thead th {
+  background-color: #eeedfe;
+  color: #3c3489;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+  border-bottom: 1.5px solid #afa9ec;
+}
+
+/* ---- Pied de tableau tfoot ---- */
+tfoot th {
+  background-color: #f1efe8;
+  color: #5f5e5a;
+  font-size: 13px;
+  font-weight: 600;
+  border-top: 1.5px solid #b4b2a9;
+}
+
+/* ---- Corps tbody ---- */
+tbody tr:nth-child(even) {
+  background-color: #f8f7f4;
+}
+
+tbody tr:hover {
+  background-color: #eeedfe;
+  transition: background-color 0.15s ease;
+}
+
+/* ---- Cellules fusionnées colspan / rowspan ---- */
+td[colspan],
+td[rowspan] {
+  background-color: #e1f5ee;
+  color: #0f6e56;
+  font-weight: 600;
+  text-align: center;
+  font-style: italic;
+}</style>
+</head>
+
+<body>
+
+  <!-- Tableau 1 : Simple, sans caption -->
+  <div class="table-wrapper">
+    <table>
+      <thead>
+        <tr>
+          <th>Nom</th>
+          <th>Âge</th>
+          <th>Pays</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Carmen</td>
+          <td>33 ans</td>
+          <td>Espagne</td>
+        </tr>
+        <tr>
+          <td>Michelle</td>
+          <td>26 ans</td>
+          <td>États-Unis</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Tableau 2 : Avec caption -->
+  <div class="table-wrapper">
+    <table>
+      <caption>Passagers du vol 377</caption>
+      <thead>
+        <tr>
+          <th>Nom</th>
+          <th>Âge</th>
+          <th>Pays</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Carmen</td>
+          <td>33 ans</td>
+          <td>Espagne</td>
+        </tr>
+        <tr>
+          <td>Michelle</td>
+          <td>26 ans</td>
+          <td>États-Unis</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Tableau 3 : Avec thead, tbody et tfoot -->
+  <div class="table-wrapper">
+    <table>
+      <caption>Passagers du vol 377</caption>
+      <thead>
+        <tr>
+          <th>Nom</th>
+          <th>Âge</th>
+          <th>Pays</th>
+        </tr>
+      </thead>
+      <tfoot>
+      </tfoot>
+      <tbody>
+        <tr>
+          <td>Carmen</td>
+          <td>33 ans</td>
+          <td>Espagne</td>
+        </tr>
+        <tr>
+          <td>Michelle</td>
+          <td>26 ans</td>
+          <td>États-Unis</td>
+        </tr>
+        <tr>
+          <td>François</td>
+          <td>43 ans</td>
+          <td>France</td>
+        </tr>
+        <tr>
+          <td>Martine</td>
+          <td>34 ans</td>
+          <td>France</td>
+        </tr>
+        <tr>
+          <td>Jonathan</td>
+          <td>13 ans</td>
+          <td>Australie</td>
+        </tr>
+        <tr>
+          <td>Xu</td>
+          <td>19 ans</td>
+          <td>Chine</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Tableau 4 : Fusion de colonnes (colspan) -->
+  <div class="table-wrapper">
+    <table>
+      <thead>
+        <tr>
+          <th>Titre du film</th>
+          <th>Pour enfants ?</th>
+          <th>Pour adolescents ?</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Massacre à la tronçonneuse</td>
+          <td>Non, trop violent</td>
+          <td>Oui</td>
+        </tr>
+        <tr>
+          <td>Les bisounours font du ski</td>
+          <td>Oui, adapté</td>
+          <td>Pas assez violent...</td>
+        </tr>
+        <tr>
+          <td>Lucky Luke, seul contre tous</td>
+          <td colspan="2">Pour toute la famille !</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Tableau 5 : Fusion de lignes (rowspan) -->
+  <div class="table-wrapper">
+    <table>
+      <thead>
+        <tr>
+          <th>Titre du film</th>
+          <td>Massacre à la tronçonneuse</td>
+          <td>Les bisounours font du ski</td>
+          <td>Lucky Luke, seul contre tous</td>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th>Pour enfants ?</th>
+          <td>Non, trop violent</td>
+          <td>Oui, adapté</td>
+          <td rowspan="2">Pour toute la famille !</td>
+        </tr>
+        <tr>
+          <th>Pour adolescents ?</th>
+          <td>Oui</td>
+          <td>Pas assez violent...</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+</body>
+</html>
