@@ -3,21 +3,148 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <link rel="stylesheet" href="style.css" />
+  <title>Navigation</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body.iframe-body {
+      font-family: Arial, sans-serif;
+    }
+
+    .site-nav {
+      position: relative;
+      background-color: #2c2c2c;
+    }
+
+    .nav-list {
+      list-style: none;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .nav-list li {
+      margin: 0;
+    }
+
+    .nav-link {
+      display: block;
+      padding: 14px 18px;
+      color: #fff;
+      text-decoration: none;
+      transition: background-color 0.3s ease;
+    }
+
+    .nav-link:hover {
+      background-color: #444;
+    }
+
+    /* --- Bouton burger (caché par défaut sur grand écran) --- */
+    .nav-toggle {
+      display: none;
+      flex-direction: column;
+      justify-content: space-between;
+      width: 30px;
+      height: 22px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 0;
+      position: absolute;
+      top: 14px;
+      right: 18px;
+      z-index: 1001;
+    }
+
+    .nav-toggle span {
+      display: block;
+      height: 3px;
+      width: 100%;
+      background-color: #fff;
+      border-radius: 2px;
+      transition: all 0.3s ease;
+    }
+
+    /* Animation du burger en croix quand actif */
+    .nav-toggle.active span:nth-child(1) {
+      transform: translateY(9.5px) rotate(45deg);
+    }
+    .nav-toggle.active span:nth-child(2) {
+      opacity: 0;
+    }
+    .nav-toggle.active span:nth-child(3) {
+      transform: translateY(-9.5px) rotate(-45deg);
+    }
+
+    /* --- Responsive : écran mobile/tablette --- */
+    @media (max-width: 768px) {
+      .nav-toggle {
+        display: flex;
+      }
+
+      .nav-list {
+        flex-direction: column;
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.35s ease;
+      }
+
+      .nav-list.open {
+        max-height: 500px;
+      }
+
+      .nav-list li {
+        width: 100%;
+        text-align: center;
+      }
+
+      .nav-link {
+        padding: 12px 0;
+        border-bottom: 1px solid rgba(255,255,255,0.1);
+      }
+    }
+  </style>
 </head>
 <body class="iframe-body">
   <nav class="site-nav">
-    <ul class="nav-list">
+    <button class="nav-toggle" id="navToggle" aria-label="Ouvrir le menu">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+    <ul class="nav-list" id="navList">
       <li><a href="accueil.html" target="contentFrame" class="nav-link">Accueil</a></li>
       <li><a href="Page1.html" target="contentFrame" class="nav-link">P1</a></li>
       <li><a href="page3.html" target="contentFrame" class="nav-link">P2</a></li>
       <li><a href="table.html" target="contentFrame" class="nav-link">TABLE</a></li>
       <li><a href="Tableau.html" target="contentFrame" class="nav-link">TABLEAU</a></li>
-       <li><a href="Listes.html" target="contentFrame" class="nav-link">LISTES</a></li>
+      <li><a href="Listes.html" target="contentFrame" class="nav-link">LISTES</a></li>
       <li><a href="formulaire.html" target="contentFrame" class="nav-link">FORMULAIRES</a></li>
       <li><a href="anne.html" target="contentFrame" class="nav-link">ANNE</a></li>
       <li><a href="CV.html" target="contentFrame" class="nav-link">CV</a></li>
     </ul>
   </nav>
+
+  <script>
+    const navToggle = document.getElementById('navToggle');
+    const navList = document.getElementById('navList');
+
+    navToggle.addEventListener('click', () => {
+      navList.classList.toggle('open');
+      navToggle.classList.toggle('active');
+    });
+
+    // referme le menu quand on clique sur un lien (pratique sur mobile)
+    document.querySelectorAll('.nav-link').forEach(link => {
+      link.addEventListener('click', () => {
+        navList.classList.remove('open');
+        navToggle.classList.remove('active');
+      });
+    });
+  </script>
 </body>
 </html>
